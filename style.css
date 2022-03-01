@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+button {
+    font-size: large;
+    display: block;
+    margin: 8px 0;
+    height: 64px;
+    width: 256px;
+}
+
+.info-panel {
+    color: gray;
+    text-decoration: none;
+}
+
+#panel {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    -webkit-transform:  translate(-50%, -50%);
+       -moz-transform:  translate(-50%, -50%);
+        -ms-transform:  translate(-50%, -50%);
+         -o-transform:  translate(-50%, -50%);
+            transform:  translate(-50%, -50%);
+}
+
+#welcome-text {
+    padding: 100% 0;
+    width: 100%;
+}
+
+#caption {
+    margin-bottom: 48px;
+}

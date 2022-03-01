@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+    <div id="panel">
+        <h1 id="welcome-text" onclick="init()">Клацни десь</h1>
+        <div id="control-panel" style="display: none">
+            <h1 id="caption">Сирена</h1>
+            <button id="alert-btn" onclick="toggleAlert()">Тривога</button>
+            <button id="mute-btn" onclick="toggleMute()" disabled>Вимкнути звук</button>
+            <p class="info-panel">
+                Версія 1.1.0
+                <br>
+                <a class="info-panel" href="https://t.me/pocoluv" target="_blank">@pocoluv</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
