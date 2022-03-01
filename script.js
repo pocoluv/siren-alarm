@@ -1,9 +1,10 @@
 let alertStatus,
     muteStatus = false;
 
-const audio = new Audio("alert.mp3"),
+const audio = new Audio("alert.mp3");
+audio.loop = true;
 
-    init = () => {
+const init = () => {
 
         document.getElementById("welcome-text").style.display = "none";
         document.getElementById("control-panel").style.display = "inline-block";
@@ -54,5 +55,5 @@ const audio = new Audio("alert.mp3"),
 
 setInterval(
     () => fetchAlertStatus("GET"),
-    1000
+    10000
 );
