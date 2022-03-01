@@ -10,17 +10,6 @@ const audio = new Audio("alert.mp3"),
 
     },
 
-    toggleAlert = () => fetch(
-        "alert.php",
-        {"method": "POST"}
-    ).
-        then(() => {
-
-            muteStatus = true;
-            toggleMute();
-
-        }),
-
     toggleMute = () => {
 
         muteStatus = !muteStatus;
@@ -29,32 +18,41 @@ const audio = new Audio("alert.mp3"),
             : "Вимкнути звук";
         audio.muted = muteStatus;
 
+    },
+
+    fetchAlertStatus = (method) => {
+
+        fetch(
+            "alert.php",
+            {method}
+        ).
+            then((response) => response.text()).
+            then((data) => {
+
+                alertStatus = data;
+
+                if (alertStatus == 1) {
+
+                    audio.play();
+                    document.getElementById("mute-btn").disabled = false;
+                    document.getElementById("alert-btn").innerText = "Відбій";
+
+                } else {
+
+                    audio.pause();
+                    audio.currentTime = 0;
+                    muteStatus = true;
+                    toggleMute();
+                    document.getElementById("mute-btn").disabled = true;
+                    document.getElementById("alert-btn").innerText = "Тривога";
+
+                }
+
+            });
+
     };
 
 setInterval(
-    () => fetch("alert.php").
-        then((response) => response.text()).
-        then((data) => {
-
-            alertStatus = data;
-
-            if (alertStatus == 1) {
-
-                audio.play();
-                document.getElementById("mute-btn").disabled = false;
-                document.getElementById("alert-btn").innerText = "Відбій";
-
-            } else {
-
-                audio.pause();
-                audio.currentTime = 0;
-                muteStatus = true;
-                toggleMute();
-                document.getElementById("mute-btn").disabled = true;
-                document.getElementById("alert-btn").innerText = "Тривога";
-
-            }
-
-        }),
-    10000
+    () => fetchAlertStatus("GET"),
+    1000
 );
